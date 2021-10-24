@@ -120,7 +120,7 @@ document.getElementById('get_map_coordinate').style.display= 'block'
     //console.log(address+' | start address= '+address1)
     if(address !="") {
 
-      fetch(`https://maps.google.com/maps/api/geocode/json?address=${address}&key=AIzaSyDMYrZZhMGlK5PKOMQRQMVffXnUJwgyatY`)
+      fetch(`https://maps.google.com/maps/api/geocode/json?address=${address}&key=KEY`)
           .then(response => response.json())
           .then((commits) => {
             //console.log(commits)
