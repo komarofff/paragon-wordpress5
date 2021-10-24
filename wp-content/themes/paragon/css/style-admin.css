@@ -1,0 +1,29 @@
+.w-100 {
+  width: 100%;
+}
+.w-75 {
+  width: 75%;
+}
+.w-50 {
+  width: 50%;
+}
+.w-25 {
+  width: 25%;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+body.post-type-property .row-actions .inline {
+  display: none;
+}
+.wp-core-ui select[multiple] {
+  height: 200px;
+  padding-right: 8px;
+  background: #fff;
+}

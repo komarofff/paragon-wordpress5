@@ -1,0 +1,111 @@
+/*
+ * Copyright 2019 Google LLC. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/* eslint-disable no-undef, @typescript-eslint/no-unused-vars, no-unused-vars */
+import "./style.css";
+
+let map: google.maps.Map;
+let lat = 42.85;
+let lng = -87.65;
+let chicago = { lat: lat, lng: lng };
+
+/**
+ * The CenterControl adds a control to the map that recenters the map on
+ * Chicago.
+ * This constructor takes the control DIV as an argument.
+ * @constructor
+ */
+function CenterControl(controlDiv: Element, map: google.maps.Map) {
+  let flag_left = true;
+  let flag_right = true;
+  let flag_up = true;
+  let flag_down = true;
+  // Set CSS for the control border.
+  const left = document.createElement("div");
+  left.classList.add("left-arrow-map");
+  left.style.cursor = "pointer";
+  left.title = "go left";
+  controlDiv.appendChild(left);
+  // Set CSS for the control interior.
+  const controlText = document.createElement("div");
+  controlText.style.color = "rgb(25,25,25)";
+  controlText.innerHTML = "Go left";
+  left.appendChild(controlText);
+  ////////////// right //////////////////
+  const right = document.createElement("div");
+  right.classList.add("right-arrow-map");
+  go_right.style.cursor = "pointer";
+  right.title = "go right";
+  controlDiv.appendChild(right);
+  // Set CSS for the control interior.
+  const controlText2 = document.createElement("div");
+  controlText2.style.color = "rgb(25,25,25)";
+  controlText2.innerHTML = "Go right";
+  right.appendChild(controlText2);
+  /////////////////////////////////////////
+
+  // Setup the click event listeners: simply set the map to Chicago.
+  left.addEventListener("mousedown", go_left);
+  left.addEventListener("mouseup", () => {
+    flag_left = false;
+  });
+  right.addEventListener("mousedown", go_right);
+  right.addEventListener("mouseup", () => {
+    flag_right = false;
+  });
+
+  function go_left() {
+    lng = lng - 0.1;
+    chicago = { lat: lat, lng: lng };
+    setTimeout(() => {
+      map.setCenter(chicago);
+      if (flag_left === true) {
+        go_left();
+      } else {
+        flag_left = true;
+        return;
+      }
+    }, 100);
+  }
+  function go_right() {
+    lng = lng + 0.1;
+    chicago = { lat: lat, lng: lng };
+    setTimeout(() => {
+      map.setCenter(chicago);
+      if (flag_right === true) {
+        go_right();
+      } else {
+        flag_right = true;
+        return;
+      }
+    }, 100);
+  }
+}
+
+function initMap(): void {
+  map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+    zoom: 8,
+    center: chicago
+  });
+
+  // Create the DIV to hold the control and call the CenterControl()
+  // constructor passing in this DIV.
+  const centerControlDiv = document.createElement("div");
+
+  CenterControl(centerControlDiv, map);
+
+  map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(centerControlDiv);
+}
+export { initMap };
