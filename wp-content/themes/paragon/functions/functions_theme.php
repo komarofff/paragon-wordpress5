@@ -323,7 +323,7 @@ function get_progerties_js()
                 if (div_arr.length == 0) {
                     div_arr.push({lat: 0, lng: 0, popup:'<p> No data</p>  '})
                 }
-                    //console.log(div_arr)
+                    console.log(div_arr)
 
                     const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
                     const icon_image = 'http://paragon.vasterra.com/wp-content/uploads/2021/10/marker-image.png';//картинка иконки адреса
@@ -358,7 +358,7 @@ function get_progerties_js()
                             position: new google.maps.LatLng(positions[i].lat, positions[i].lng),
                             map,
                             title: positions[i].title,
-                            label: labels[i % labels.length],
+                            //label: labels[i % labels.length],
                             icon: icon_image,
                             optimized: true
 
