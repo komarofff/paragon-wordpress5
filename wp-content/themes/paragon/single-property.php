@@ -32,13 +32,13 @@
                     </div>
 
                 </div>
-                <div class="col-12 col-md-6 d-flex flex-column align-items-start justify-content-between">
+                <div class="col-12 col-md-6 d-flex flex-column align-items-start justify-content-between ">
                     <div class="col-12 mt-4 mt-md-0">
                         <p class="prop-page-title"><?php echo $post->post_title; ?> </p>
                         <p class="broker-info"><?php echo $post->property_address; ?></p>
                     </div>
                     <div class="col-12 ">
-                        <div class="col-12 col-md-6 mt-3 mt-md-0">
+                        <div class="col-12 col-md-6 mt-3 mt-md-0 property-description-block">
                             <p class="property-block-gray-text"><span>Property Type</span> <span
                                         class="property-block-text"><?php echo get_prop_type($post->property_type); ?></span>
                             </p>

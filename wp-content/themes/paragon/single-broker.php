@@ -176,33 +176,37 @@
         );
 
 
-//        global $wpdb;
-//        $results = $wpdb->get_results("SELECT query1.*,query2.* FROM {$wpdb->prefix}wp_posts as query1      left join {$wpdb->prefix}wp_postmeta as query2 on (query1.ID=query2.post_id  and query2.meta_key='property_type') WHERE   (query1.post_status='publish' and query1.post_type='property')");
-//        $meta = get_post_custom_keys($results[0]->ID);
-//        //p_arr($meta);
-//        $query_par = "SELECT query1.*,query2.* FROM {$wpdb->prefix}wp_posts as query1      left join {$wpdb->prefix}wp_postmeta as query2 on (query1.ID=query2.post_id  and ( ";
-//        foreach ($meta as $item) {
-//            $query_par .= " (query2.meta_key=".$item." and  query2.meta_value LIKE %".$search."%) OR ";
-//        }
-//        $query_par.= " 1=1 ) WHERE   (query1.post_status='publish' and query1.post_type='property') ";
-//echo $query_par;
-        //p_arr($results);
+        //        $true_args = array(
+        //            'post_type' => 'property',
+        //            'numberposts' => -1,
+        //            // 's' => $search,
+        //            'meta_query' => array(
+        //                'relation' => 'OR',
+        //                array(
+        //                    //'key' => 'property_type',
+        //                    'value' => 'Multi-family',
+        //                    'compare' => 'LIKE',
+        //                )
+        //            )
+        //        );
+        //
+        //        $data_posts = query_posts($true_args);
+        //        p_arr($data_posts);
 
-
-        //                $true_args = array(
-        //                    'post_type' => 'property',
-        //                    'numberposts' => -1,
-        //                   //'s' => $search,
-        //                    'meta_query' => array(
-        //                        'relation' => 'OR',
-        //                        array(
-        //                           'key' => $params,
-        //                         'value' => 'Multi-family',
-        //                           'compare' => 'LIKE',
-        //                        )
-        //                    )
-        //                );
-        //$posts2 = get_posts( $true_args );
+                $true_args = array(
+                    'post_type' => 'property',
+                    'numberposts' => -1,
+                   //'s' => $search,
+                    'meta_query' => array(
+                        'relation' => 'OR',
+                        array(
+                           'key' => $params,
+                         'value' => 'Multi-family',
+                           'compare' => 'LIKE',
+                        )
+                    )
+                );
+        $posts2 = get_posts( $true_args );
 
         //p_arr($posts2);
 

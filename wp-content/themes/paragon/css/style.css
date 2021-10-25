@@ -1006,7 +1006,7 @@ input.wpcf7-form-control.wpcf7-submit {
 }
 
 .inner-page-title::after {
-    content: url("/wp-content/themes/paragon/images/stripe-red.png");
+    content: url("../images/stripe-red.png");
     position: absolute;
     left: -121px;
     bottom: -22px;
@@ -1034,7 +1034,7 @@ input.wpcf7-form-control.wpcf7-submit {
 
 .money::before {
     position: absolute;
-    content: url("/wp-content/themes/paragon/images/money.svg");
+    content: url("../images/money.svg");
     bottom: 12px;
     left: 50%;
     -webkit-transform: translateX(-50%);
@@ -1050,7 +1050,7 @@ input.wpcf7-form-control.wpcf7-submit {
 
 .check::before {
     position: absolute;
-    content: url("/wp-content/themes/paragon/images/check.svg");
+    content: url("../images/check.svg");
     bottom: 12px;
     left: 50%;
     -webkit-transform: translateX(-50%);
@@ -1066,7 +1066,7 @@ input.wpcf7-form-control.wpcf7-submit {
 
 .transaction::before {
     position: absolute;
-    content: url("/wp-content/themes/paragon/images/transaction.svg");
+    content: url("../images/transaction.svg");
     bottom: 12px;
     left: 50%;
     -webkit-transform: translateX(-50%);
@@ -1097,6 +1097,7 @@ ul.top-menu a {
     object-fit: cover;
     object-position: top;
 }
+
 @media (min-width: 2000px) {
     .container {
         max-width: 1800px;
@@ -1467,5 +1468,19 @@ ul.top-menu a {
         font-size: 12px;
     }
 
-}
 
+    .property-description-block > .broker-info {
+        font-size: 16px !important;
+    }
+    .property-description-block >  .prop-page-title {
+        font-size: 26px !important;
+    }
+    .property-description-block > .property-block-gray-text {
+        font-size: 16px !important;
+
+    }
+    .property-description-block > p> .property-block-text {
+        font-size: 16px !important;
+    }
+
+}
