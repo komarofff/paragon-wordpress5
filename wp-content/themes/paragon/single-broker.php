@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-    <div class="content mb-3 page-content">
+    <div class="content mb-3 page-content bg-light">
 
         <?php
         global $post;
@@ -59,9 +59,11 @@
             }
         }
 
-
+        $brEmail = '';
+        $brPhone = '';
         $social = '';
         if ($postBroker->broker_email && $postBroker->broker_email != '') {
+            $brEmail = $postBroker->broker_email;
             $social .= '
                                        <a href="mailto:' . $postBroker->broker_email . '">
                                        <img class="mr-2" src="' . get_template_directory_uri() . '/images/Mail.svg" alt="email">
@@ -69,6 +71,7 @@
                                        ';
         }
         if ($postBroker->phone && $postBroker->phone != '') {
+            $brPhone = $postBroker->phone;
             $social .= '
                                        <a href="tel:' . $postBroker->phone . '">
                                        <img class="mr-2" src="' . get_template_directory_uri() . '/images/Email.svg" alt="email">
@@ -95,7 +98,7 @@
          <div class="container-fluid    " >
             <div class="container  mx-auto broker-head   d-flex justify-content-between align-items-center" style="min-height: 110px">
                 <div class="row px-1  py-2 col-12 d-flex justify-content-between align-items-center w-full">
-                    <p class="col-6 d-flex justify-content-start broker-title-name">' . $postBroker->post_title . '</p>
+                    <p class="col-6 d-flex justify-content-start broker-title-name"></p>
                  <!--<p class="close-broker-page col-6 col-md-1 d-flex justify-content-end align-items-center cursor-pointer">
                       <img class="cursor-pointer" src="' . get_template_directory_uri() . '/images/close.svg" alt="close menu">
                       <span class="ms-2 mb-1 cursor-pointer">Close</span>
@@ -108,13 +111,13 @@
             
                 <div class="row  px-0 px-md-4 col-12 ms-1 ms-md-0">
                
-                    <div class="order-2 order-md-1 col-12 col-md-5 d-flex flex-column justify-content-center align-items-center citate-block">
-                        <div class="d-flex flex-column justify-content-center align-items-end">
+                    <div class="order-2 order-md-1 col-12 col-md-7 d-flex flex-column justify-content-center align-items-center citate-block">
+                        <div class="d-flex flex-column justify-content-center align-items-start">
                         <p class=" d-flex justify-content-start broker-title-name mb-4 me-4">' . $postBroker->post_title . '</p>
                            ' . $postBroker->comments . '
                         </div>
                     </div>
-                    <div class="col-2 d-none  d-md-block"></div>
+                    <div class="d-none  d-md-block"></div>
                     <div class="col-12 col-md-5  order-1 order-md-3">
                         <div class="team-broker-image-box">
                             <img src="' . $image . '" alt="' . $postBroker->post_title . '" class="team-broker-image" >
@@ -124,10 +127,15 @@
                 <div class="row  col-12 m-0">
                     <div class="col-3 d-md-block d-none"></div>
                     <div class="col-12 col-md-9 broker-block">
-                        <div class="col-12 d-flex justify-content-between align-items-end">
+                        <div class="col-12 d-flex justify-content-between align-items-start">
                             <div>
                                 <p class="block-broker-name ">' . $postBroker->post_title . '</p>
-                                <p class="block-broker-sign">' . $postBroker->employee_position . '</p>
+                                <p class="block-broker-sign" style="font-weight: lighter;">' . $postBroker->employee_position . '</p>
+                                <!--<div>
+                                 <p class="mb-0"><a class="block-broker-sign  mb-0" style="font-size: 12px; font-weight: lighter">' . $brEmail . '</a></p>
+                                  <p class="mb-0"><a class="block-broker-sign  mb-0" style="font-size: 12px; font-weight: lighter">' . $brPhone . '</a>
+                                  </p>
+                                  </div>-->
                             </div>
                             <div class="broker-social "><p>
                             ' . $social . '
@@ -152,7 +160,7 @@
                 </div>
             </div>
             <div class="broker-page-latest-projects bg-md-white  ">
-                <div class="row col-12 max-width">
+                <div class="row col-12 max-width px-2">
                 ' . $properties . '
 
                 </div>

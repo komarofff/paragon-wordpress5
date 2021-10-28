@@ -15,7 +15,7 @@
                     <div class="col-12">
                         <div class="col-12 d-flex flex-column justify-content-between align-items-start">
                             <div class="team-broker-text-box">
-                                <p class="team-text">Our team</p>
+                              <!--<p class="team-text">Our team</p>-->
                                 <p class="team-title">Client partnerships that last beyond the deal</p>
                                 <p class="team-text">
                                     Our brokers strive to build lasting partnerships with our clients. We support our
@@ -45,7 +45,7 @@
                     echo '
                              
                  <div class="col-12 col-md-4 my-3  my-md-3 ">
-                    <div class="col-12 d-flex flex-column justify-content-between align-items-start" style="min-height: 100%;">
+                    <div class="col-12 d-flex flex-column justify-content-start align-items-start" style="min-height: 100%;">
                         <div class="team-broker-image-box" data-index="' . $post_data->ID . '"><img class="team-broker-image"
                                                                                src="' . $the_image . '"
                                                                                alt="' . $post_data->post_title . '"></div>

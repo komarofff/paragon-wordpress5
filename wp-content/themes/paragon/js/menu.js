@@ -58,7 +58,7 @@ function removeModalMenu() {
 }
 
 
-const url = new URL(window.location.href);
+var url = new URL(window.location.href);
 //console.log(url)
 // to mark menu on index page
 const items = document.querySelectorAll('.menu-item ')
@@ -71,15 +71,18 @@ items.forEach((val) => {
 
 // get hash (#) on index page
 function get_hash() {
+    url = new URL(window.location.href);
     let val_hash = url.hash
     if (val_hash !== '') {
         del_class()
         document.querySelector('a[href="/' + val_hash + '"]').classList.add('current-menu-item')
     }
+
 }
 
 // delete mark on index page
 function del_class() {
+   url = new URL(window.location.href);
     const items2 = document.querySelectorAll('.current-menu-item ')
     for (let i = 0; i < items2.length; i++) {
         items2[i].classList.remove('current-menu-item')
@@ -89,35 +92,37 @@ function del_class() {
 
 //get pathname and mark menu
 function get_pathname() {
-    let path=''
-    let pathPage=''
+     url = new URL(window.location.href);
+    let path = ''
+    let pathPage = ''
     let val_pathname = url.pathname
 
     if (val_pathname !== '/' && val_pathname !== '') {
         del_class()
         let path_separate = url.pathname.split("/", 2)
-         path = path_separate[1] + '/'
+        path = path_separate[1] + '/'
 
         if (path === 'property/') {
             path = '#properties'
-             pathPage = document.querySelector('a[href="/' + path + '"]')
+            pathPage = document.querySelector('a[href="/' + path + '"]')
             if (pathPage) {
                 pathPage.classList.add('current-menu-item')
             }
-        } if (path === 'investment-consulting/' || path === 'brokerage/'  || path === 'commercial-lending/' ) {
+        }
+        if (path === 'investment-consulting/' || path === 'brokerage/' || path === 'commercial-lending/') {
             path = '#our_services'
-             pathPage = document.querySelector('a[href="/' + path + '"]')
+            pathPage = document.querySelector('a[href="/' + path + '"]')
             if (pathPage) {
                 pathPage.classList.add('current-menu-item')
             }
         }
 
 
-            pathPage = document.querySelector('a[href="' + url.protocol + '//' + url.host + '/' + path_separate[1] + '/"]')
-            if (pathPage) {
-                pathPage.classList.add('current-menu-item')
-            }
-       let  pathPage2 = document.querySelector('a[href="'  + '/' + path_separate[1] + '/"]')
+        pathPage = document.querySelector('a[href="' + url.protocol + '//' + url.host + '/' + path_separate[1] + '/"]')
+        if (pathPage) {
+            pathPage.classList.add('current-menu-item')
+        }
+        let pathPage2 = document.querySelector('a[href="' + '/' + path_separate[1] + '/"]')
         if (pathPage2) {
             pathPage2.classList.add('current-menu-item')
         }
@@ -125,6 +130,7 @@ function get_pathname() {
         //console.log('a[href="' + url.protocol + '//' + url.host + '/' + path_separate[1] + '/"]')
        //console.log(url.pathname.split("/",2))
     }
+
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -132,3 +138,101 @@ document.addEventListener('DOMContentLoaded', () => {
     get_pathname()
     get_hash()
 })
+
+let isBigImage55 = document.querySelector(".big-images")
+if (isBigImage55) {
+    isBigImage55.parentNode.style.cssText = 'min-width:100vw;'
+}
+
+let isAbout = document.querySelector("#about")
+if (isAbout) {
+    isAbout.children[0].classList.add('container')
+}
+let isServices = document.querySelector("#our_services")
+if (isServices) {
+    isServices.children[0].classList.add('container')
+}
+let isProperties = document.querySelector("#properties")
+if (isProperties) {
+    isProperties.children[0].classList.add('container')
+}
+let isNews = document.querySelector("#market_news")
+if (isNews) {
+    isNews.children[0].classList.add('container')
+}
+let newSizeOfScreen = document.documentElement.clientWidth
+if (newSizeOfScreen > 768) {
+    let isNewsBox = document.querySelector(".home-news-box")
+    if (isNewsBox) {
+        isNewsBox.children[0].classList.add('container')
+    }
+}
+window.onresize = () => {
+    newsBox()
+}
+
+function newsBox() {
+    let newSizeOfScreen2 = document.documentElement.clientWidth
+    if (newSizeOfScreen2 <= 768) {
+        let isNewsBox2 = document.querySelector(".home-news-box")
+        if (isNewsBox2) {
+            isNewsBox2.children[0].classList.remove('container')
+        }
+    }
+}
+
+
+    const mobMenClick = document.querySelector('.mobile-menu')
+    if (mobMenClick) {
+        const arrMenus = mobMenClick.querySelectorAll('.menu-item')
+        if (arrMenus) {
+            arrMenus.forEach((val) => {
+                val.addEventListener('click', () => {
+                    document.querySelector(".mobile-menu").style.cssText = `
+    -webkit-transform: translateX(-85vw);
+       -moz-transform: translateX(-85vw);
+       -ms-transform: translateX(-85vw);
+       -o-transform: translateX(-85vw);
+       transform: translateX(-85vw);`
+                    removeModalMenu()
+                })
+
+            })
+        }
+    }
+//
+//
+// jQuery(document).ready(function ($) {
+//
+//     $(function () {
+//         $('a[href*=#]:not([href=#])').click(function () {
+//             del_class()
+//             get_pathname()
+//             get_hash()
+//
+//             if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+//                 var target = $(this.hash);
+//                 target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+//                 if (target.length) {
+//                     document.querySelector(".mobile-menu").style.cssText = `
+//     -webkit-transform: translateX(-85vw);
+//        -moz-transform: translateX(-85vw);
+//        -ms-transform: translateX(-85vw);
+//        -o-transform: translateX(-85vw);
+//        transform: translateX(-85vw);`
+//                     removeModalMenu()
+//
+//                     $('html,body').animate({
+//                         scrollTop: target.offset().top - 70
+//                     }, 1000);
+//
+//
+//                     return false;
+//                 }
+//             }
+//
+//
+//         });
+//     });
+//
+// })

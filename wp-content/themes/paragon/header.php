@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<?php echo '<html lang="en">';?>
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
@@ -19,18 +19,36 @@
 	<?php wp_head(); ?>
 
 </head>
-<body class="container-fluid">
+<?php
+	echo '<body class="container-fluid" style="margin-top:20px;">';
+?>
+
     <?php
-        if( is_front_page() ) {
-            $class_header = 'bg-white border-bottom';
-            echo '<header id="header" class="container-fluid position-fixed top-0 left-0 right-0 header-box head-block-start bg-white ">';
-        }else{
-            echo '<header id="header" class="container-fluid position-fixed top-0 left-0 right-0 header-box head-block-start bg-light border-bottom">';
-        }
+//    if( is_admin_bar_showing() ) {
+//        if (is_front_page()) {
+//            $class_header = 'bg-white border-bottom';
+//            echo '<header id="header" class="container-fluid position-fixed top-0 left-0 right-0 header-box head-block-start bg-white " style="margin-top:30px;">';
+//        } else {
+//            echo '<header id="header" class="container-fluid position-fixed top-0 left-0 right-0 header-box head-block-start bg-light border-bottom"  style="margin-top:30px;">';
+//        }
+//    }else {
+//        if (is_front_page()) {
+//            $class_header = 'bg-white border-bottom';
+//            echo '<header id="header" class="container-fluid position-fixed top-0 left-0 right-0 header-box head-block-start bg-white " >';
+//        } else {
+//            echo '<header id="header" class="container-fluid position-fixed top-0 left-0 right-0 header-box head-block-start bg-light border-bottom"  >';
+//        }
+//    }
+    if (is_front_page()) {
+        $class_header = 'bg-white border-bottom';
+        echo '<header id="header" class="container-fluid position-fixed top-0 left-0 right-0 header-box head-block-start bg-none " >';
+    } else {
+        echo '<header id="header" class="container-fluid position-fixed top-0 left-0 right-0 header-box head-block-start bg-light border-bottom"  >';
+    }
     ?>
 
     <div class="container  mx-auto head-block">
-        <li class="row d-flex justify-content-between align-items-center py-4">
+        <div class="row d-flex justify-content-between align-items-center py-1">
             <div class="col-lg-3 col-md-3 col-6">
                 <a href="<?= home_url(); ?>">
                     <img class="header-logo" src="<?= get_template_directory_uri(); ?>/images/logo.png" alt="<?= bloginfo( 'sitename' ); ?>">
@@ -80,11 +98,15 @@
 					'depth'           => 1					
 				] );
 			    ?>
+                <?php
+                global $linkedin_link;
+                global $instagram_link;
+                ?>
                 <div class="d-flex justify-content-start align-items-center mt-4">
                     <p class="mt-4">
-                        <a href="#"><img class="me-3" src="<?= get_template_directory_uri(); ?>/images/instagram-mobile.svg" alt="instagram"></a>
-                        <a href="#"><img class="me-3" src="<?= get_template_directory_uri(); ?>/images/facebook-mobile.svg" alt="facebook"></a>
-                        <a href="#"><img class="me-3" src="<?= get_template_directory_uri(); ?>/images/linkedin-mobile.svg" alt="linkedin"></a>
+                        <a target="_blank" href="<?php echo $instagram_link;?>"><img class="me-3" src="<?= get_template_directory_uri(); ?>/images/instagram-mobile.svg" alt="instagram"></a>
+
+                        <a  target="_blank"  href="<?php echo $linkedin_link;?>"><img class="me-3" src="<?= get_template_directory_uri(); ?>/images/linkedin-mobile.svg" alt="linkedin"></a>
                     </p>
                 </div>
             </div>

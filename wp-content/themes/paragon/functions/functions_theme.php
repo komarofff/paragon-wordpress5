@@ -179,7 +179,7 @@ function fn_home_properties($atts)
 
     $data .= '<div class="row mt-1 ">
                 <p class="col-12 ">
-                    <span class="count_properties">' . $count_posts . '</span> Results
+                    <span class="count_properties">' . $count_posts . '</span> Listings
                 </p>
             </div>
         </div>
@@ -217,7 +217,7 @@ function get_property_list($data_posts)
         if ($item->property_unpriced == 'on' or $item->property_price == '') {
             $price = 'Unpriced';
         } else {
-            $price = '$' . number_format($item->property_price, 0, ',', '.');
+            $price = '$' . number_format($item->property_price, 0, '.', ',');
         }
         $map_coordinate = get_field('map_location', $item->ID);
         $lat = $map_coordinate['latitude'];
@@ -323,7 +323,7 @@ function get_progerties_js()
                 if (div_arr.length == 0) {
                     div_arr.push({lat: 0, lng: 0, popup:'<p> No data</p>  '})
                 }
-                    console.log(div_arr)
+                    //console.log(div_arr)
 
                     const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
                     const icon_image = 'http://paragon.vasterra.com/wp-content/uploads/2021/10/marker-image.png';//картинка иконки адреса
@@ -622,6 +622,8 @@ add_shortcode('our_team', 'Our_Team');
 
 function fn_contact_page_data($arr)
 {
+    global $linkedin_link;
+    global $instagram_link;
     $data = '
 <div class=" d-flex flex-column justify-content-center align-items-start contact-page-box">
     <p class="prop-page-title">' . $arr['title'] . '</p>
@@ -636,9 +638,9 @@ F: <a href="tel:' . $arr['fax'] . '">' . $arr['fax'] . '</a>
  <a class="red-text" href="mailto:' . $arr['email'] . '">' . $arr['email'] . '</a>
 </p>
  <p class="mt-4">
-                        <a href="' . $arr['instagram'] . '"><img class="me-3" src="' . get_template_directory_uri() . '/images/instagram-mobile.svg" alt="instagram"></a>
-                        <a href="' . $arr['facebook'] . '"><img class="me-3" src="' . get_template_directory_uri() . '/images/facebook-mobile.svg" alt="facebook"></a>
-                        <a href="' . $arr['linkedin'] . '"><img class="me-3" src="' . get_template_directory_uri() . '/images/linkedin-mobile.svg" alt="linkedin"></a>
+                        <a href="' . $instagram_link . '"><img class="me-3" src="' . get_template_directory_uri() . '/images/instagram-mobile.svg" alt="instagram"></a>
+                       
+                        <a href="' . $linkedin_link . '"><img class="me-3" src="' . get_template_directory_uri() . '/images/linkedin-mobile.svg" alt="linkedin"></a>
                     </p>
                     </div>
     ';
@@ -709,7 +711,7 @@ function broker_page_js()
                                 broker_data = responsive
 
                                 document.getElementById('single_broker').innerHTML = `
-                                <div class="container-fluid   border-bottom ">
+                                <div class="container-fluid    ">
             <div class="container  mx-auto broker-head   d-flex justify-content-between align-items-center" style="min-height: ${hHeader2}px">
                                 ${broker_data}`
 
@@ -796,6 +798,7 @@ function fn_getBrokerData()
         'post_status' => 'publish'
     ));
     $name = $postBroker->post_title;
+
     foreach ($arr as $item) {
         $list = $item->broker_features;
         if ($list) {
@@ -804,7 +807,7 @@ function fn_getBrokerData()
                     if ($item->property_unpriced == 'on' or $item->property_price == '') {
                         $price = 'Unpriced';
                     } else {
-                        $price = '$' . number_format($item->property_price, 0, ',', '.');
+                        $price = '$' . number_format($item->property_price, 0, '.', ',');
                     }
                     $im = get_the_post_thumbnail_url($item->ID, 'large');
                     if($im==''){$im=get_template_directory_uri()."/images/no-img.jpg";}
@@ -841,36 +844,40 @@ function fn_getBrokerData()
         }
     }
 
-
+    $brEmail = '';
+    $brPhone = '';
     $social = '';
     if ($postBroker->broker_email && $postBroker->broker_email != '') {
+        $brEmail = $postBroker->broker_email;
         $social .= '
                                        <a href="mailto:' . $postBroker->broker_email . '">
-                                       <img class="mr-2" src="' . get_template_directory_uri() . '/images/Mail.svg" alt="email">
+                                       <img class="me-2" src="' . get_template_directory_uri() . '/images/Mail.svg" alt="email">
                                        </a>
                                        ';
     }
     if ($postBroker->phone && $postBroker->phone != '') {
+        $brPhone = $postBroker->phone;
         $social .= '
                                        <a href="tel:' . $postBroker->phone . '">
-                                       <img class="mr-2" src="' . get_template_directory_uri() . '/images/Email.svg" alt="email">
+                                       <img class="me-2" src="' . get_template_directory_uri() . '/images/Email.svg" alt="email">
                                        </a>
                                        ';
     }
     if ($postBroker->phone2 && $postBroker->phone != '') {
         $social .= '
                                        <a href="tel:' . $postBroker->phone . '">
-                                       <img class="mr-2" src="' . get_template_directory_uri() . '/images/Email.svg" alt="email">
+                                       <img class="me-2" src="' . get_template_directory_uri() . '/images/Email.svg" alt="email">
                                        </a>
                                        ';
     }
     if ($postBroker->linkedin && $postBroker->linkedin != '') {
         $social .= '
                                        <a target="_blank" href="' . $postBroker->linkedin . '">
-                                       <img class="mr-2" src="' . get_template_directory_uri() . '/images/linkedin-dark.svg" alt="email">
+                                       <img class="me-2" src="' . get_template_directory_uri() . '/images/linkedin-dark.svg" alt="email">
                                        </a>
                                        ';
     }
+
 
 
     $brokerPage = '         
@@ -886,23 +893,33 @@ function fn_getBrokerData()
         <div class="block-overflow">
             <div class="container-fluid">
                 <div class="row  px-0 px-md-4 col-12 ms-1 ms-md-0">
-                    <div class="order-2 order-md-1 col-12 col-md-5 d-flex flex-column justify-content-center align-items-center citate-block">
+                    <div class="order-2 order-md-1 col-12 col-md-7 d-flex flex-column justify-content-center align-items-center citate-block">
                         <div class="d-flex flex-column justify-content-center align-items-end">
                            ' . $postBroker->comments . '
                         </div>
                     </div>
-                    <div class="col-2 d-none  d-md-block"></div>
+                    <div class="d-none  d-md-block"></div>
                     <div class="col-12 col-md-5  order-1 order-md-3">
-                        <img style="min-width:100%; min-height;100%;" src="' . wp_get_attachment_image_url($postBroker->broker_image, array(320, 320)) . '" alt="' . $postBroker->post_title . '">
+                    
+                    <div class="team-broker-image-box" >
+                    <img class="team-broker-image" src="' . wp_get_attachment_image_url($postBroker->broker_image, array(320, 320)) . '" alt="' . $postBroker->post_title . '">
+                    </div>
+                    
+                      <!-- <img style="min-width:100%; min-height;100%;" src="' . wp_get_attachment_image_url($postBroker->broker_image, array(320, 320)) . '" alt="' . $postBroker->post_title . '">-->
                     </div>
                 </div>
                 <div class="row  col-12 m-0">
                     <div class="col-3 d-md-block d-none"></div>
                     <div class="col-12 col-md-9 broker-block">
-                        <div class="col-12 d-flex justify-content-between align-items-end">
+                        <div class="col-12 d-flex justify-content-between align-items-start">
                             <div>
                                 <p class="block-broker-name ">' . $postBroker->post_title . '</p>
-                                <p class="block-broker-sign">' . $postBroker->employee_position . '</p>
+                                <p class="block-broker-sign mb-0"  style="font-weight: lighter;">' . $postBroker->employee_position . '</p>
+                                <!--<div>
+                                 <p class="mb-0"><a class="block-broker-sign  mb-0" style="font-size: 12px; font-weight: lighter">' . $brEmail . '</a></p>
+                                  <p class="mb-0"><a class="block-broker-sign  mb-0" style="font-size: 12px; font-weight: lighter">' . $brPhone . '</a>
+                                  </p>
+                                  </div>-->
                             </div>
                             <div class="broker-social "><p>
                             ' . $social . '
@@ -921,13 +938,13 @@ function fn_getBrokerData()
             <div class="row broker-page-bottom container mx-sm-0 px-sm-0 mx-md-2 px-md-2">
                 <div class=" col-12 mb-4 mb-md-2">
                     <p class="col-12"><img src="' . get_template_directory_uri() . '/images/stripe.png" alt="stripe"><span class="stripe-title ms-1">
-                    ' . $postBroker->post_title . ' latest projects</span>
+                    ' . $postBroker->post_title .' Current Listings</span>
 
                     </p>
                 </div>
             </div>
             <div class="broker-page-latest-projects bg-md-white  ">
-                <div class="row col-12 max-width">
+                <div class="row col-12 max-width px-2">
                 ' . $properties . '
 
                 </div>

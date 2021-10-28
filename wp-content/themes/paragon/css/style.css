@@ -10,8 +10,12 @@ html {
     color: #181C25;
     scroll-behavior: smooth;
     /*background: #fff;*/
+    overflow-x: hidden;
 }
 
+a.text-white.text-xs {
+    font-size: 12px;
+}
 
 img {
     max-width: 100%;
@@ -128,7 +132,7 @@ footer {
 }
 
 .footer-content {
-    padding: 64px 15px;
+    padding: 24px 15px;
     z-index: 0;
 }
 
@@ -141,17 +145,18 @@ footer {
     z-index: 0;
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
+    font-size: 17px;
     line-height: 28px;
     text-transform: uppercase;
     color: #FFFFFF;
+    margin-bottom:0;
 }
 
 .footer-text {
     z-index: 0;
     font-style: normal;
     font-weight: 300;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 21px;
     color: #FFFFFF;
 }
@@ -208,6 +213,7 @@ footer {
 
 .team-broker-image-box {
     /*transform-origin: 0 0;*/
+    background: #8e8e90;
     min-width: 100%;
     height: auto;
     overflow: hidden;
@@ -218,6 +224,7 @@ footer {
     position: relative;
     z-index: 0;
     min-width: 100%;
+    height: 25vw;
     -webkit-object-fit: cover;
     -moz-object-fit: cover;
     -ms-object-fit: cover;
@@ -232,21 +239,21 @@ footer {
 
 .team-broker-image:hover {
     z-index: 0;
-    -webkit-transform: scale(1.3);
-    -moz-transform: scale(1.3);
-    -ms-transform: scale(1.3);
-    -o-transform: scale(1.3);
-    transform: scale(1.3);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .team-broker-name {
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
-    line-height: 140%;
+    line-height: 100%;
     color: #181C25;
     padding-bottom: 0;
-    margin-bottom: 5px;
+    margin-bottom: 0;
     margin-top: 10px;
 }
 
@@ -278,11 +285,11 @@ footer {
     top: 0;
     right: 0;
     max-width: 55vw;
-    z-index: 0;
+    z-index: -1;
 }
 
 .l-center-team {
-    z-index: 0;
+    z-index: -1;
     position: absolute;
     left: 0;
     top: 30%;
@@ -300,7 +307,7 @@ footer {
     bottom: 0;
     right: 0;
     max-width: 80vw;
-    z-index: 0;
+    z-index: -1;
 }
 
 /*  BROKER PAGE */
@@ -359,8 +366,9 @@ footer {
     font-style: normal;
     font-weight: bold;
     font-size: 26px;
-    line-height: 140%;
+    line-height: 130%;
     color: #181C25;
+    margin-bottom: 0;
 }
 
 .block-broker-sign {
@@ -827,7 +835,7 @@ footer {
     margin-left: 0;
     border: 1px solid #ccc;
     height: 100%;
-    min-height:500px;
+    min-height: 500px;
 }
 
 /*.gm-ui-hover-effect {*/
@@ -868,6 +876,11 @@ footer {
     font-size: 26px;
     line-height: 140%;
     color: #181C25;
+    margin-bottom: 0;
+}
+
+p.broker-info.more-size {
+    font-size: 18px;
 }
 
 .project-title {
@@ -981,7 +994,7 @@ input.wpcf7-form-control.wpcf7-submit {
 .citate-box {
     position: absolute;
     bottom: 101px;
-    left: 8vw;
+    left: 7vw;
     max-width: 600px;
 
 }
@@ -989,7 +1002,7 @@ input.wpcf7-form-control.wpcf7-submit {
 .citate-box-2 {
     position: absolute;
     bottom: 160px;
-    left: 8vw;
+    left: 7vw;
     max-width: 600px;
 
 }
@@ -1083,22 +1096,62 @@ input.wpcf7-form-control.wpcf7-submit {
 
 ul.top-menu a {
     font-family: 'EB Garamond', serif;
-    font-size: 25px;
+    font-size: 22px;
 }
-.mobile-menu > ul > li>a {
+
+.mobile-menu > ul > li > a {
     font-family: 'EB Garamond', serif;
 }
-.mobile-close{
+
+.mobile-close {
     font-family: 'EB Garamond', serif;
 }
+
 .elementor-10 .elementor-element.elementor-element-a990256 img {
     width: 100%;
     max-height: 100vh;
     object-fit: cover;
     object-position: top;
+    margin-top: -52px;
+}
+
+.com-lend-div {
+    margin-top: -130px !important;
+}
+
+.com-lend-div {
+    margin-top: -130px !important;
+}
+
+.citate-box-2, .citate-box {
+    left: 9vw;
+}
+/*.elementor-10 .elementor-element.elementor-element-9061fc1 > .elementor-element-populated {*/
+/*    padding: 0px 0px 0px 80px !important;*/
+/*}*/
+@media (min-width: 3000px) {
+    .team-broker-image {
+
+        height: 15vw !important;
+        object-position: top;
+    }
 }
 
 @media (min-width: 2000px) {
+    .com-lend-div {
+        margin-top: -130px !important;
+    }
+
+    .citate-box-2, .citate-box {
+        left: 11vw;
+    }
+
+    .team-broker-image {
+
+        height: 25vw;
+        object-position: top;
+    }
+
     .container {
         max-width: 1800px;
     }
@@ -1108,7 +1161,7 @@ ul.top-menu a {
     }
 
     .elementor-container.elementor-column-gap-default {
-        min-width: 100vw;
+        /*min-width: 100vw;*/
     }
 
     .elementor-10 .elementor-element.elementor-element-a990256 img {
@@ -1124,13 +1177,47 @@ ul.top-menu a {
 }
 
 @media (max-width: 1500px) {
+    /*.elementor-10 .elementor-element.elementor-element-9061fc1 > .elementor-element-populated {*/
+    /*    padding: 0px 0px 0px 80px !important;*/
+    /*}*/
+
+
+    .footer-logo, .header-logo {
+        width: 222px;
+    }
     .container {
         max-width: 1280px;
     }
+    .citate-box-2, .citate-box {
+        left: 5vw;
+    }
 
+}
+/*@media (min-width: 1440px) {*/
+/*    .elementor-10 .elementor-element.elementor-element-01b6ebb {*/
+/*        padding: 160px 100px 160px 12vw !important;*/
+/*    }*/
+/*}*/
+@media (max-width: 1280px) {
+    .container {
+        max-width: 1080px;
+    }
+    ul.top-menu a {
+        font-family: 'EB Garamond', serif;
+        font-size: 19px;
+    }
+    /*.elementor-10 .elementor-element.elementor-element-01b6ebb {*/
+    /*    padding: 0 !important;*/
+    /*}*/
 }
 
 @media (max-width: 1230px) {
+    /*#about {*/
+    /*    padding: 0 !important;*/
+    /*}*/
+    .com-lend-div {
+        margin-top: -60px !important;
+    }
     a {
         font-size: 18px;
     }
@@ -1138,13 +1225,17 @@ ul.top-menu a {
     .broker-page-latest-projects {
         padding: 10px;
     }
+
     ul.top-menu a {
-        font-size: 20px;
+        font-size: 19px;
     }
 
 }
 
 @media (max-width: 1024px) {
+    .com-lend-div {
+        margin-top: 10px !important;
+    }
     .text-block {
         padding: 0;
     }
@@ -1152,7 +1243,7 @@ ul.top-menu a {
     .citate-box {
         position: absolute;
         bottom: 143px;
-        left: 8vw;
+        left: 7vw;
         max-width: 600px;
     }
 
@@ -1207,6 +1298,7 @@ ul.top-menu a {
 }
 
 @media (max-width: 906px) {
+
     a {
         font-size: 15px;
     }
@@ -1225,11 +1317,15 @@ ul.top-menu a {
         margin-bottom: 8px;
     }
 
+    ul.top-menu a {
+        font-size: 17px;
+    }
+
 }
 
 @media (max-width: 880px) {
     ul.top-menu a {
-        font-size: 16px;
+        font-size: 15px;
         font-family: 'EB Garamond', serif;
     }
 }
@@ -1374,7 +1470,7 @@ ul.top-menu a {
     .footer-title {
         font-size: 18px;
         line-height: 130%;
-        margin-bottom: 10px;
+        margin-bottom: 0;
     }
 
     .footer-text {
@@ -1401,8 +1497,8 @@ ul.top-menu a {
     .broker-page-latest-projects {
         padding: 0;
         margin: 0 auto;
-        max-width: 97vw;
-        min-width: 97vw;
+        max-width: unset;
+        min-width: unset;
     }
 
     .bg-md-white {
@@ -1422,9 +1518,17 @@ ul.top-menu a {
         /*height:173px;*/
         max-height: unset;
     }
+
     .gm-style-iw.gm-style-iw-c {
         max-width: 77vw !important;
     }
+
+    .team-broker-image {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+
 
 }
 
@@ -1441,7 +1545,7 @@ ul.top-menu a {
     .footer-title {
         font-size: 14px;
         line-height: 130%;
-        margin-bottom: 10px;
+        margin-bottom: 0;
     }
 
     .footer-text {
@@ -1457,12 +1561,15 @@ ul.top-menu a {
 
         font-size: 24px;
     }
-    .property-block-title{
-        font-size:14px;
+
+    .property-block-title {
+        font-size: 14px;
     }
-    .property-block-gray-text{
-        font-size:12px;
+
+    .property-block-gray-text {
+        font-size: 12px;
     }
+
     .property-block-text, .property-block {
 
         font-size: 12px;
@@ -1472,15 +1579,50 @@ ul.top-menu a {
     .property-description-block > .broker-info {
         font-size: 16px !important;
     }
-    .property-description-block >  .prop-page-title {
+
+    .property-description-block > .prop-page-title {
         font-size: 26px !important;
     }
+
     .property-description-block > .property-block-gray-text {
         font-size: 16px !important;
 
     }
-    .property-description-block > p> .property-block-text {
+
+    .property-description-block > p > .property-block-text {
         font-size: 16px !important;
     }
 
+}
+
+section#our_services {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+section#properties {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+section#market_news {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.home-news-box {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/*#about::before {*/
+/*    display: block;*/
+/*    content: "";*/
+/*    height: 55px;*/
+/*    margin: -55px 0 0;*/
+/*}*/
+#wpadminbar {
+    position: fixed;
+    bottom: 0 !important;
+    top:unset;
 }

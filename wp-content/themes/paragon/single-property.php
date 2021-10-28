@@ -35,7 +35,7 @@
                 <div class="col-12 col-md-6 d-flex flex-column align-items-start justify-content-between ">
                     <div class="col-12 mt-4 mt-md-0">
                         <p class="prop-page-title"><?php echo $post->post_title; ?> </p>
-                        <p class="broker-info"><?php echo $post->property_address; ?></p>
+                        <p class="broker-info more-size"><?php echo $post->property_address; ?></p>
                     </div>
                     <div class="col-12 ">
                         <div class="col-12 col-md-6 mt-3 mt-md-0 property-description-block">
@@ -50,7 +50,7 @@
                                         $price_prop = 'Unpriced';
                                         echo $price_prop;
                                     } else {
-                                        $price_prop = '$' . number_format($post->property_price, 0, ',', '.');
+                                        $price_prop = '$' . number_format($post->property_price, 0, '.', ',');
                                         echo $price_prop;
                                     }
                                     ?>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="row col-12">
                         <div class="col-12 mt-3 mt-md-0">
-                            <p class="project-title">Project highlights:</p>
+                            <p class="project-title">Property Highlights:</p>
                             <div class="col-12 d-flex align-items-start justify-content-start flex-wrap flex-md-nowrap">
                                 <ul class="col-12 col-md-6  list-prop ps-3">
                                     <?php
@@ -107,7 +107,7 @@
                         <?php
                         if (getUrlMimeType($flyer) == 'application/pdf') {
 
-                            echo '   <a target="_blank" href="' . $flyer . '" class="prop-button">Download flyer</a>';
+                            echo '   <a target="_blank" href="' . $flyer . '" class="prop-button">Download OM</a>';
                         }
                         ?>
                     </div>
@@ -138,13 +138,16 @@
                         foreach ($brokers_arr as $item) {
                             foreach ($query_posts as $post_data)
                                 if ($item == $post_data->post_title) {
+                                    $url = get_permalink( $post_data->ID );
                                     $the_image = wp_get_attachment_image_url($post_data->broker_image, array(320, 320));
                                     if (++$i === $numItems) {
                                         echo '
-                             <div class="col-12  col-md-6 d-flex justify-content-start flex-md-nowrap flex-wrap align-items-end ">
-                        <div class="col-12 col-md-6 team-broker-image-box"><img class="team-broker-image"
-                                                                                src="' . $the_image . '"
-                                                                                alt="broker"></div>
+                             <div class="col-12  col-md-7 d-flex justify-content-start flex-md-nowrap flex-wrap align-items-end ">
+                             
+                        <div class="col-12 col-md-6 team-broker-image-box">
+                        <a href="'.$url.'">
+                        <img class="team-broker-image"  src="' . $the_image . '"   alt="' . $post_data->post_title . '"> </a></div>
+                                                                                
                         <div class="col-12 col-md-6 broker-information ps-0  ps-md-3">
                             <p class="broker-name">' . $post_data->post_title . '</p>
                             <p class="broker-profession">' . $post_data->employee_position . '</p>
@@ -155,10 +158,12 @@
                             ';
                                     } else {
                                         echo '
-                             <div class="col-12 col-md-6 d-flex justify-content-start flex-md-nowrap flex-wrap align-items-end mb-3">
-                        <div class="col-12 col-md-6 team-broker-image-box"><img class="team-broker-image"
+                             <div class="col-12 col-md-7 d-flex justify-content-start flex-md-nowrap flex-wrap align-items-end mb-3">
+                            
+                        <div class="col-12 col-md-6 team-broker-image-box"> <a href="'.$url.'"><img class="team-broker-image"
                                                                                 src="' . $the_image . '"
-                                                                                alt="broker"></div>
+                                                                                alt="broker"></a> </div>
+                                                                               
                         <div class="col-12 col-md-6 broker-information ps-0  ps-md-3">
                             <p class="broker-name">' . $post_data->post_title . '</p>
                             <p class="broker-profession">' . $post_data->employee_position . '</p>
