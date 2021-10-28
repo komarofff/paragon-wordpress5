@@ -1,5 +1,5 @@
 <?php
-// config
+
 define('HOME', 'Главная');
 
 $property_status = [
@@ -19,9 +19,13 @@ if ( is_user_logged_in() ) {
     show_admin_bar(true);
 }
 $keyAPI = 'KEY';
-//
 
 function show_map(){
   global  $keyAPI;
-    echo '<script  src="https://maps.googleapis.com/maps/api/js?key='.$keyAPI.'&callback=initMap&v=weekly"  async></script>';
+    echo '
+    <script  src="https://maps.googleapis.com/maps/api/js?key='.$keyAPI.'&callback=initMap&v=weekly"  async></script>
+    ';
 }
+
+$linkedin_link='https://www.linkedin.com/company/paragon-real-estate-advisors-inc/';
+$instagram_link = 'https://www.instagram.com/paragonrealestateadvisors/';
