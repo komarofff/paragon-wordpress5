@@ -98,12 +98,13 @@ jQuery(document).ready(function ($) {
 
   ///get map coordinate
   let buttonGet = document.getElementById('property_address_for_map')
+  if(buttonGet){
   if(buttonGet.value.length>0){
     document.getElementById('get_map_coordinate').style.display= 'block'
   }else{
     document.getElementById('get_map_coordinate').style.display= 'none'
   }
-  if(buttonGet){
+
     buttonGet.addEventListener('input',(e)=>{
       if(buttonGet.value.length>0){
 document.getElementById('get_map_coordinate').style.display= 'block'
@@ -120,7 +121,7 @@ document.getElementById('get_map_coordinate').style.display= 'block'
     //console.log(address+' | start address= '+address1)
     if(address !="") {
 
-      fetch(`https://maps.google.com/maps/api/geocode/json?address=${address}&key=KEY`)
+      fetch(`https://maps.google.com/maps/api/geocode/json?address=${address}&key=AIzaSyDMYrZZhMGlK5PKOMQRQMVffXnUJwgyatY`)
           .then(response => response.json())
           .then((commits) => {
             //console.log(commits)

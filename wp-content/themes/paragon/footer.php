@@ -1,6 +1,7 @@
 <?php
 global $linkedin_link;
 global $instagram_link;
+global $post_mail;
 ?>
 <footer class="container-fluid mx-auto">
     <div class="container footer-content">
@@ -17,8 +18,8 @@ global $instagram_link;
                 <div>
                     <p class="footer-title">Start An Avaluation</p>
                     <p class="footer-text mb-0">We are ready for the challenge</p>
-                    <p class="footer-text mt-0 mb-0"><a class="text-white text-xs" href="mailto:Info@PadagonREA.com">Info@PadagonREA.com</a> </p>
-                    <p class="footer-text mt-0"><a class=" text-xs text-white" href="/">PadagonREA.com</a></p>
+                    <p class="footer-text mt-0 mb-0"><a class="text-white text-xs" href="mailto:<?php echo $post_mail;?>"><?php echo $post_mail;?></a> </p>
+                    <p class="footer-text mt-0"><a class=" text-xs text-white" href="/">ParagonREA.com</a></p>
 
 
                 </div>

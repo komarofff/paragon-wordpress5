@@ -18,7 +18,7 @@ $property_type = [
 if ( is_user_logged_in() ) {
     show_admin_bar(true);
 }
-$keyAPI = 'KEY';
+$keyAPI = 'AIzaSyDMYrZZhMGlK5PKOMQRQMVffXnUJwgyatY';
 
 function show_map(){
   global  $keyAPI;
@@ -29,3 +29,4 @@ function show_map(){
 
 $linkedin_link='https://www.linkedin.com/company/paragon-real-estate-advisors-inc/';
 $instagram_link = 'https://www.instagram.com/paragonrealestateadvisors/';
+$post_mail = 'Info@ParagonREA.com';
