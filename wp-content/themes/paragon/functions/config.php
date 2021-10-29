@@ -18,7 +18,7 @@ $property_type = [
 if ( is_user_logged_in() ) {
     show_admin_bar(true);
 }
-$keyAPI = 'AIzaSyDMYrZZhMGlK5PKOMQRQMVffXnUJwgyatY';
+$keyAPI = 'KEY';
 
 function show_map(){
   global  $keyAPI;
